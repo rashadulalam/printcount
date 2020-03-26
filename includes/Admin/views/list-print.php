@@ -3,7 +3,11 @@
 
 	<a href="<?php echo admin_url( 'admin.php?page=print-count&action=new' ) ?>" class="page-title-action"><?php _e( 'Add new' ); ?> </a>
 
-
+	<?php if (isset( $_GET['inserted'])) : ?>
+		<div class="notice notice-success">
+			<p><?php _e( 'Data inserted successfully!', 'print-count' ); ?></p>
+		</div>
+	<?php endif; ?>
 
 	<form action="" method="post">
 		<?php
