@@ -1,0 +1,28 @@
+{
+    "name": "hp/print-count",
+    "description": "A tutorial plugin",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "rashadulalam",
+            "email": "rashadul91@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "PrintCount\\": "includes/"
+        },
+        "files": [ "includes/functions.php" ]
+    }
+
+
+
+
+
+
+
+
+}
