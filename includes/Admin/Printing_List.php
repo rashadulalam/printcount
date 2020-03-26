@@ -55,7 +55,7 @@ class Printing_List extends \WP_List_Table
                 break;
             
             default:
-                return isset( $item->column_name ) ? $item->column_name : '';
+                return isset( $item->$column_name ) ? $item->$column_name : '';
         }
     }
 
