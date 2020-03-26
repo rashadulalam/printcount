@@ -69,5 +69,14 @@ class Printings
 
         $insert_id = insert_new_print( $args );
 
+        if( is_wp_error( $insert_id ) ) {
+            wp_die( $insert_id->intl_get_error_message() );
+        }
+
+        $redirected_to = admin_url( 'admin.php?page=print-count&inserted=true' );
+
+        wp_redirect( $redirected_to );
+        exit;
+
     }
 }
