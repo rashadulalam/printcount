@@ -93,3 +93,23 @@ function printing_count()
 
    return $count;
 }
+
+/**
+ * delete an record
+ *
+ * 
+ * @param  $id
+ *
+ * 
+ * @return int | false
+ */
+function print_delete( $id )
+{
+    global $wpdb;
+
+    return $wpdb->delete(
+        $wpdb->prefix . 'pc',
+        [ 'id' => $id ],
+        [ '%d']
+    );
+}
