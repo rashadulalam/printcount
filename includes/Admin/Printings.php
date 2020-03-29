@@ -79,4 +79,26 @@ class Printings
         exit;
 
     }
+
+    public function delete_printing() {
+        if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'printing-delete' ) ) {
+            wp_die( 'Are you cheating?' );
+        }
+
+        if( ! current_user_can( 'manage_options' )) {
+            wp_die( 'Are you cheating?' );
+        }
+
+        $id = isset( $_REQUEST['id'] ) ? intval( $_REQUEST['id'] ) : 0;
+
+        if( print_delete( $id ) ) {
+            $redirected_to = admin_url( 'admin.php?page=print-count&deleted=true' );
+        } else {
+            $redirected_to = admin_url( 'admin.php?page=print-count&deleted=false' );
+        }
+
+        wp_redirect( $redirected_to );
+
+        exit;
+    }
 }
