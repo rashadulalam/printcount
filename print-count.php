@@ -68,7 +68,7 @@ final class Print_Count {
 		define( 'PRINTCOUNT_FILE', __FILE__ );
 		define( 'PRINTCOUNT_PATH', __DIR__ );
 		define( 'PRINTCOUNT_URL', plugins_url( '', PRINTCOUNT_FILE ) );
-		define( 'PRINTCOUNT_ASSETS', PRINT_COUNT_URL . '/assets' ) );
+		define( 'PRINTCOUNT_ASSETS', PRINT_COUNT_URL . '/assets' );
 
 
 	}
@@ -78,7 +78,9 @@ final class Print_Count {
 	 * @return void
 	 */
 	public function init_plugin()
-	{
+	{	
+		new PrintCount\Assets();
+		
 		if ( is_admin() ) {
 			new PrintCount\Admin();
 		} else {
