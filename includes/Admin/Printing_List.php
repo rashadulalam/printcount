@@ -47,18 +47,41 @@ class Printing_List extends \WP_List_Table
         return $actions;
     }
 
-    protected function column_default( $item, $column_name )
-    {
+    protected function column_default( $item, $column_name ) {
         switch ( $column_name ) {
+            
             case 'created_at':
-                return wp_date( get_option( 'date_formate' ), strtotime( $item->created_at ) );
-                break;
+                return wp_date( get_option( 'date_format' ), strtotime( $item->created_at ) );
+
+                
             
             default:
                 return isset( $item->$column_name ) ? $item->$column_name : '';
         }
     }
 
+    public function column_pc_title( $item ) {
+
+        $actions = [];
+
+        $actions['edit'] = sprintf(
+
+            '<a href="%s" title="%s">%s</a>', admin_url( 'admin.php?page=print-count&action=edit&id=' . $item->pc_ID ), __( 'Edit', 'print-count' ),__( 'Edit', 'print-count' )
+
+        );
+
+        $actions['delete'] = sprintf(
+
+            '<a href="#" class="submitdelete" data-id="%s">%s</a>', $item->pc_ID, __( 'Delete', 'print-count' )
+
+        );
+
+        return sprintf(
+
+            '<a href="%1$s"><strong>%2$s</strong></a> %3$s', admin_url( 'admin.php?page=print-count&action=view&id=' . $item->pc_ID ), $item->pc_title, $this->row_actions( $actions )
+
+        );
+    }
 
     public function get_sortable_columns()
     {
