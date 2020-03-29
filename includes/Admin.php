@@ -28,5 +28,7 @@ class Admin {
      */
     public function despatch_actions( $printings ) {
         add_action( 'admin_init', [ $printings, 'form_handler' ] );
+
+        add_action( 'admin_post_printing-delete', [ $printings, 'delete_printing'] );
     }
 }
