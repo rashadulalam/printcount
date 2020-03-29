@@ -5,7 +5,7 @@ namespace PrintCount\Frontend;
 /**
  * Frontend
  */
-class Frontend
+class Enquery
 {
     
     function __construct()
@@ -15,5 +15,9 @@ class Frontend
 
     public function print_count_enquery($atts, $content = '' ) {
         
+
+        ob_start();
+            include __DIR__ .'/views/enquery.php';
+        return ob_get_clean();
     }
 }
