@@ -21,7 +21,16 @@ require_once __DIR__ . '/vendor/autoload.php';
  */
 final class Print_Count {
 	
+	/**
+	 * Plugin version
+	 *
+	 * @var  string
+	 */
+	const version = '1.0';
+
 	private function __construct() {
+
+		$this->define_constants();
 
 		register_activation_hook( __FILE__, [ $this, 'print_count_activation' ] );
 
@@ -50,6 +59,17 @@ final class Print_Count {
 	{
 		$activation = new PrintCount\Installer();
 		$activation->run();
+
+	}
+
+	public function define_constants()
+	{
+		define( 'PRINTCOUNT_VERSION', self::version );
+		define( 'PRINTCOUNT_FILE', __FILE__ );
+		define( 'PRINTCOUNT_PATH', __DIR__ );
+		define( 'PRINTCOUNT_URL', plugins_url( '', PRINTCOUNT_FILE ) );
+		define( 'PRINTCOUNT_ASSETS', PRINT_COUNT_URL . '/assets' ) );
+
 
 	}
 
