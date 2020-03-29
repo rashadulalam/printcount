@@ -61,6 +61,8 @@ final class Print_Count {
 	{
 		if ( is_admin() ) {
 			new PrintCount\Admin();
+		} else {
+			new PrintCount\Frontend();
 		}
 	}
 }
